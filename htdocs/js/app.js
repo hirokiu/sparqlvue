@@ -96,7 +96,7 @@ if( query_params.length > 0 ){
 }
 
 const endpoint = 'http://kingman.lodac.nii.ac.jp/sparql';
-// const endpoint = 'http://localhost:8890/sparql';
+// const endpoint = 'http://localhost:8891/sparql';
 const base_query = `?default-graph-uri=
 &format=application%2Fsparql-results%2Bjson
 &timeout=0
@@ -155,7 +155,7 @@ SELECT DISTINCT * WHERE {
     OPTIONAL {
         ?item dcterms:references ?ref .
         OPTIONAL {
-            ?ref schema:Text ?text .
+            ?ref schema:text ?text .
         }
     }
     OPTIONAL {
@@ -182,7 +182,7 @@ SELECT DISTINCT * WHERE {
     OPTIONAL {
         ?item dcterms:references ?ref .
         OPTIONAL {
-            ?ref schema:Text ?text .
+            ?ref schema:text ?text .
         }
     }
     BIND(CONCAT(?bu_name,"/",?mon_name,"/",?kou_name,"/",?item_name) as ?link_name)
@@ -199,7 +199,7 @@ SELECT DISTINCT * WHERE {
     ?item rdfs:label ?item_name .
     OPTIONAL {
         ?item dcterms:references ?ref .
-        ?ref schema:Text ?text .
+        ?ref schema:text ?text .
     }
     FILTER( CONTAINS( str(?ref), "${params[1]}") )
     BIND(CONCAT(?bu_name,"/",?mon_name,"/",?item_name) as ?link_name)
